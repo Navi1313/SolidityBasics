@@ -1,0 +1,110 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.25;
+
+
+contract simple{
+
+//Types of variables  <1(On the basis of their Aceess)->.
+
+//1) STATE VARIABLES -> variables whose values are permanently stores in contract Storage or Decleared inSide the contract Storage:
+
+uint a = 120;
+uint b = 45;
+bool h = true ;
+address ad ; 
+int136 i36 ;
+
+
+
+//2) LOCAL VARIABLES -> variables whose values can be access util the function lasts :
+
+function addTwoNos() private view returns (uint c){
+    return a + b;
+}
+function valueReturn() private view returns (uint){
+    uint d = addTwoNos();
+    return d; // local variable 
+}
+
+
+
+//3) GLOBAL VARIABLES-> these are the special variables exists in global namespace which use to get info about blockchain
+
+function payableFunc() public payable returns (uint){
+
+    uint amount = msg.value; // global variable 
+    return amount;
+
+}
+
+// <2 (0n the basis of values that can be stored)
+
+// Now lets see diffrent data types with get() set() Functions
+
+// 1) unSigned Integer 
+uint num ;
+
+function setNumber(uint _num) public {
+    num = _num;
+}
+
+function getNumber() public view returns(uint){
+    return num;
+}
+
+// 2) String  
+string public myString ;
+
+function setString() public {
+    myString = "hii ! this is new journey with Solidity";
+}
+
+function getString() public view returns (string memory){
+    return myString;
+}
+
+// 3) Signed Integer
+int numb ;
+
+function setInteger(int _numb) public {
+    numb  = _numb;
+}
+function getInteger() public view returns (int){
+    return numb;
+}
+
+// 4) Address 
+
+address addy ;
+
+function setAddress(address _addy) public {
+    addy = _addy;
+}
+
+function getAdress() public view returns (address) {
+    return addy;
+}
+
+// 5) Boolean 
+
+bool oneOrZero;
+function setBoolean(bool _oneOrZero) public {
+    oneOrZero = _oneOrZero;
+}
+
+function getBoolean() public view returns (bool) {
+    return oneOrZero;
+}
+
+// 6) Address Payable 
+address payable  adpay ;
+function setAddPayable(address payable  _adpay) public {
+    addy = _adpay;
+}
+
+function getAddPayable() public view returns (address payable ) {
+    return adpay;
+}
+
+
+}
