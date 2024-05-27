@@ -1,0 +1,68 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.25;
+
+contract array {
+
+    // <1> Fixed Size array of  :->
+    uint[5] public array1= [34,56,7774,32]; // UNSIGNED INTEGERS
+    int[5] public array2 = [-34,45,-23,23,65]; // SIGNED INTEGERS
+    string[4] public array3 = ["hello" , "hii" ,"bye" , "byee" ]; // STRINGS
+    bool[3] public array4 = [true, false, true]; // BOOLEAN
+
+    address[3] public addresses ;  // etherium ADDRESS type
+    constructor(){ 
+        // The constructor initializes the array with three specific Ethereum addresses
+        addresses[0] = 0x1234567890123456789012345678901234567890;
+        addresses[1] = 0x2345678901234567890123456789012345678901;
+        addresses[2] = 0x3456789012345678901234567890123456789012;
+        }
+
+    function getAddress() public view returns(address[3] memory){
+        return addresses;
+    }
+   // The " public " -> keyword makes the array accessible from outside the contract
+   // and automatically creates a getter function
+
+
+   // <2> Dynamic size Array 
+       uint[] public arrayd1= [34,56,7774,32]; // UNSIGNED INTEGERS
+
+      // Opertations are -> PUSH(INSERT) ,UPDATE, POP , DELETE , LENGTH
+      function pushing () external {
+        arrayd1.push(56);
+        arrayd1.push(78);
+        arrayd1.push(6);  //upto here arrayd1 will be [34,56,7774,32, 56 , 78 ,6]
+      }
+
+      function poping () external {
+        arrayd1.pop();   // arrayd1 [34,56,7774,32, 56 , 78]
+      }
+    
+      function updating() external {
+        arrayd1[2] = 99999;  //  now arrayd1 be [34,56,99999,32, 56 , 78]
+      }
+
+      function deleting() external {
+        delete arrayd1[1] ; // now arrayd1 be [34,0,99999,32, 56 , 78] 
+        // when elements deleted its default value Updates to 0 
+      }
+
+       // Length of an array ->
+      uint len = arrayd1.length;
+
+      // <3> Create array in Memory ->
+      uint[] a = new uint[](5);
+
+      function pushh() external {
+        a[0] = 32;  
+        a.push(23);   //upto here a becomes [32,23 , 0 , 0 , 0]
+        // same way work with pop()
+      }
+
+
+      // Function that returns array 
+
+      function returnArray () public view returns (uint[] memory){
+        return a;
+      }
+}
