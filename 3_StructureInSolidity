@@ -1,0 +1,60 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.25;
+
+contract structure{
+
+    // Struct are used to group data together you can think 
+    //them as a Objects in JS or SAME as strucure in C/C++ :-> 
+
+    struct Car {
+        string model ; 
+        uint year ; 
+        address owner ; 
+    }
+
+    // Struct can be used as state variable :->
+    uint public car ; 
+
+    // Also we can create an array of struct 
+    Car[] public cars; 
+
+    // We can also define mapping from owner to cars 
+    mapping (address => Car[]) public CarsByOwners;
+
+    // Ist way of intitalizing the struct Car :->
+        Car ferrari = Car("1AZF", 2019 , msg.sender);
+    // 2nd way of initializing the Struct Car :->    
+        Car buggati = Car({owner: msg.sender , model : "BBT" , year : 2021 });
+    // 3rd way of intializing an struct Car :->
+    Car hennessy ;
+
+
+    function examples() external  {
+
+    hennessy.model = "dsf33";
+    hennessy.year =2024;
+    hennessy.owner = msg.sender;
+
+    // method 1 of pushing an struct into an array :->
+        cars.push(ferrari);
+        cars.push(buggati);
+        cars.push(hennessy);
+   
+   // method 2 of pushing an struct into an array 
+    cars.push(Car("BMW", 2023 ,msg.sender));
+
+   // Read Data from the Struct Array:->
+    Car  storage _car = cars[0];
+   _car.model;
+   _car.year;
+   _car.owner;
+
+   // Modifying an year at the 0 th index 
+   _car.year = 2343;
+
+   // deleting car owner 
+  delete  _car.owner;  // reset to 0
+  delete cars[1];
+
+    }
+}
