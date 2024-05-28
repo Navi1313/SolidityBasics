@@ -1,0 +1,65 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.25;
+
+contract functions{
+// On the basis of Access Specifier :->
+// 1> public ->  everybody is able to access fun inside and outside the contract :
+// 2> private -> fun can be access inside the same contract :
+// 3> internal -> fun can only be access inside the solidity Smart Contract can also be used to define recursive funs however 
+// since Solidity is stack based programming language it is not very much advisable to use recursive funs also including gas constraints 
+// 4> external -> the function that can not be called internally 
+
+
+//5> view -> Read only functions in which state variable can not be modified after calling them ☎️
+//6> pure -> funs in which state varible do not modify this returns only value passed in parameters OR local variable values 
+  
+
+// This function will not run -> errored: estimated gas for this transaction is higher than gasLimit set in the configuration 
+//   uint a = 233;
+//   function subInt(uint cc ) external view returns(uint){
+//     return a - 100 - cc;
+//   }
+
+// this is correct way of writing an function 
+  function meanInt(uint x , uint y, uint z ) external  pure returns(uint){
+        return (x+y+z)/3 ;
+    }
+
+    function addInt(uint x , uint y, uint z ) external pure returns(uint){
+        return x+y+z ;
+    }
+
+    function mplyInt(uint x , uint y ) external pure returns(uint){
+        return x*y ;
+    }
+
+function divInt() external pure returns(uint){
+    uint aa = 999;
+    return aa/3;
+  }
+
+// this will give warning ⚠️ state mutability can be restricted to pure contracts
+//   function multiply() public view  returns (uint){
+//     uint ans = 0 ;
+//     for(uint i = 0 ; i<100; i++){
+//         ans+= i ;
+//     }
+//     return ans ; 
+
+//   }
+
+
+//7> payable functions -> These are those function in which we can send or recieve ether currency $ on etherium blockchain
+
+function payToMe() public payable returns (uint){
+    uint cost = 10000;
+    uint expenditure = 9000;
+
+    return cost - expenditure ;
+}
+
+
+
+  
+    
+}
