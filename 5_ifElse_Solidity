@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.25;
+
+contract ifElse{
+    function example(uint _x) external  pure returns(uint){
+        if(_x == 10){
+            return _x;
+        }
+        else if(_x < 10){
+            return _x + 1;
+        }
+        else{
+            return _x - 1;
+        }
+    }
+
+    function ternaryOperator(uint _x)external pure returns(uint){
+        // if(_x == 10){
+        //     return _x;
+        // }else{
+        //     return _x + 1;
+        // }.  This can be written as :->
+
+        return  _x == 10 ? 1 : _x +1 ;
+
+    }
+
+}
