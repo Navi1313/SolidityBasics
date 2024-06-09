@@ -9,10 +9,14 @@ contract functions{
 // since Solidity is stack based programming language it is not very much advisable to use recursive funs also including gas constraints 
 // 4> external -> the function that can not be called internally 
 
-
+Types of function :->
 //5> view -> Read only functions in which state variable can not be modified after calling them ☎️
+(can only read from blockchain)
 //6> pure -> funs in which state varible do not modify this returns only value passed in parameters OR local variable values 
-  
+(No interaction with blockchain)
+//7> payable functions -> These are those function in which we can send or recieve ether currency $ on etherium blockchain
+//8> fallback function -> Exec when no matching function found .
+
 
 // This function will not run -> errored: estimated gas for this transaction is higher than gasLimit set in the configuration 
 //   uint a = 233;
@@ -47,9 +51,6 @@ function divInt() external pure returns(uint){
 //     return ans ; 
 
 //   }
-
-
-//7> payable functions -> These are those function in which we can send or recieve ether currency $ on etherium blockchain
 
 function payToMe() public payable returns (uint){
     uint cost = 10000;
