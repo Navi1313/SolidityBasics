@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+contract variable {
+
+// Car is state variable that store on blocchain 
+    struct Car {
+        uint CarNo;
+        uint milage ;
+        string typeofCar ; 
+        uint price ;
+    }
+
+    mapping (uint => Car) public CarNumber ; 
+
+// function arguments we passed on runtime that stores in the stack memory
+    function calculateMilage (uint _carNo , uint _distanceCovered , uint _liters) public  returns(uint){
+        require (_liters != 0 , "Car must consume some Feul");
+
+        // as Car struct varable is an contract's state variable it sores on blockchain  
+        Car storage carline = CarNumber[_carNo];
+
+        // the  milage variables get stored in the memory
+        uint milage = _distanceCovered / _liters ;
+        carline.CarNo = _carNo ;
+        carline.milage = milage ;
+        return  milage ; 
+    }
+
+}
+
